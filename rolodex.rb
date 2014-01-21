@@ -15,12 +15,9 @@ class Rolodex
     first_name = gets.chomp.capitalize
     puts "Enter last name:"
     last_name = gets.chomp.capitalize
-    
 
     contact = Contact.new(first_name, last_name, @id)
-   
     @contacts << contact
-
     display_contact(contact)
 
   end
@@ -109,6 +106,11 @@ class Rolodex
       puts "Press enter to perform another action."
       ok = gets.chomp
     end
+  end
+
+  def exit
+    puts "\e[H\e[2J"
+    puts "Too-da-loo!"
   end
     
 end
