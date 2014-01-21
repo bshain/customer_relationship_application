@@ -19,7 +19,6 @@ class Rolodex
     contact = Contact.new(first_name, last_name, @id)
     @contacts << contact
     display_contact(contact)
-
   end
 
   def display_contact(contact)
@@ -35,6 +34,35 @@ class Rolodex
     puts  "Press enter to perform another action."
     ok = gets.chomp
   end
+
+  def delete_contact
+    puts "\e[H\e[2J"
+    puts "Enter the ID of the contact you'd like to delete."
+    delete_search = gets.chomp.to_i
+
+    @contacts.each do |contact|
+		if delete_search == contact.id
+			 @contacts.delete(contact)
+		end
+		end
+	end	
+
+      # if delete_search == (contact.first_name)
+      #   display_contact(contact)
+      #   puts "Is this the contact you'd like to delete?"
+      #   puts "[1] Yes"
+      #   puts "[2] No"
+      #   puts "Enter a number"
+      #   choice = gets.chomp.to_i
+      #   contact.delete if choice == 1
+      #   go_back if choice == 2
+      # elsif delete_search != (contact.first_name)
+      #   puts "Sorry, that name isn't in the database."
+      #       go_back
+        
+  #     end
+  #   end
+  # end
 
   def modify_contact
 
@@ -83,13 +111,14 @@ class Rolodex
           if search_id == contact.id
             display_contact(contact)
           elsif search_id != contact.id
-            puts "Sorry, that name isn't in the database."
+            puts "Sorry, that ID isn't in the database."
             go_back  
           end
         end 
 
      else
-        puts "That is not a valid selection."   
+        puts "That is not a valid selection."
+        go_back   
     end
   end
 
@@ -114,3 +143,4 @@ class Rolodex
   end
     
 end
+
