@@ -39,12 +39,27 @@ class Rolodex
   end
 
   def search_contact
-    puts "Enter the ID of the contact you'd like to see."
-    contact_id = gets.chomp.to_i
+    puts "\e[H\e[2J"
+    puts "Search by:"
+    puts "[1] First name"
+    puts "[2] Last name"
+    puts "[3] ID"
+    puts "Enter a number:"
+    user_search = gets.chomp.to_i
+    
+    puts "Which name would you like to look up?" if user_search == 1
+    search_name = gets.chomp.capitalize
 
-    @contacts.each do |x|
-    end
+
+    @contacts.each do |contact|
+      if search_name == contact.first_name
+        display_contact(contact)
+      end
+    end 
   end
+
+
+
 
   def display_all_contacts
    puts "\e[H\e[2J"
