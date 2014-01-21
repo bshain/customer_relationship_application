@@ -33,10 +33,12 @@ class CRM
   end
 
   def run
-    while user_selected!=6
+    unless user_selected==6
       print_main_menu
       user_selected = gets.chomp.to_i
       call_option(user_selected)
+     else
+      call_option(user_selected) 
     end
   end
 
